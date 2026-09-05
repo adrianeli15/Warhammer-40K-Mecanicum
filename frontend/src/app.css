@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", serif;
+  --font-ornate: "Cinzel Decorative", serif;
+  --font-body: "Rajdhani", sans-serif;
+  --color-void: #07040a;
+  --color-crypt: #11080f;
+  --color-ash: #1c1018;
+  --color-bone: #ead9c4;
+  --color-blood: #c3122f;
+  --color-ember: #ff4d6d;
+  --color-gilt: #d4af37;
+  --color-cyan: #6ef3ff;
+  --color-mist: #8a7a8c;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(195, 18, 47, 0.22), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(110, 243, 255, 0.07), transparent 50%),
+    linear-gradient(180deg, #07040a 0%, #12070e 100%);
+}
+
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.ornate-panel {
+  position: relative;
+  background: linear-gradient(165deg, rgba(28, 16, 24, 0.92), rgba(8, 4, 10, 0.96));
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(195, 18, 47, 0.18) inset,
+    0 0 40px rgba(195, 18, 47, 0.12),
+    0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+.ornate-panel::before,
+.ornate-panel::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-gilt);
+  pointer-events: none;
+}
+
+.ornate-panel::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.ornate-panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.hud-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gilt), var(--color-blood), transparent);
+  opacity: 0.7;
+}
+
+.btn-blood {
+  background: linear-gradient(180deg, #e11d3a, #8a0d22);
+  color: #fff6ea;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  box-shadow: 0 0 18px rgba(195, 18, 47, 0.45);
+  transition: 180ms ease;
+}
+
+.btn-blood:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 0 28px rgba(255, 77, 109, 0.55);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--color-gilt);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.btn-ghost:hover {
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.field {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(138, 122, 140, 0.35);
+  color: var(--color-bone);
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 1px rgba(110, 243, 255, 0.35), 0 0 16px rgba(110, 243, 255, 0.12);
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, rgba(195, 18, 47, 0.28), transparent);
+  border-left: 2px solid var(--color-ember);
+  color: var(--color-bone);
+}
+
+.pulse-core {
+  animation: pulse-core 2.8s ease-in-out infinite;
+}
+
+@keyframes pulse-core {
+  0%,
+  100% {
+    box-shadow: 0 0 8px #c3122f, 0 0 20px rgba(110, 243, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 16px #ff4d6d, 0 0 32px rgba(110, 243, 255, 0.28);
+  }
+}
